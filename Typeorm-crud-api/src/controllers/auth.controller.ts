@@ -8,12 +8,15 @@ export const authUsers = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const { body } = req;
+ const { body } = req;
   const { mail, pass } = body;
   const user = await getRepository(Auth).findOne({ mail });
-  console.log(body)
+
+
+  
+
   const passwordCorrect = user ? user.pass : "";
-  const compare = bcrypt.compareSync(pass, passwordCorrect);
+  const compare = bcrypt.compare(pass, passwordCorrect);
   if (!compare) {
     return res.status(401).json({
       ok: false,
@@ -38,7 +41,7 @@ export const authUsers = async (
     message: `User signing successfully`,
     token: t_jwt,
     user: user,
-  });
+  }); 
 };
 
 export const registerUsers = async (
@@ -47,7 +50,7 @@ export const registerUsers = async (
 ): Promise<Response> => {
   const { body } = req;
   // generate salt to hash password
-  const salt = await bcrypt.genSalt(10);
+  const salt = 10;
   // now we set user password to hashed password
   body.pass = await bcrypt.hash(body.pass, salt);
 
