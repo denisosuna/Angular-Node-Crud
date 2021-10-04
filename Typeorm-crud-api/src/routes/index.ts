@@ -1,3 +1,4 @@
 import userRoutes from "./user.routes"
 import authRoutes from "./auth.routes"
-export {userRoutes,authRoutes};
+import taskRoutes from "./task.routes"
+export {userRoutes,authRoutes,taskRoutes};

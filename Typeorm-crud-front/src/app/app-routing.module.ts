@@ -1,9 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+//components
+import { TaskComponent } from './components/task/task.component';
+import { PrivateTaskComponent } from './components/private-task/private-task.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth', pathMatch: 'full' },
-  { path: 'auth', loadChildren: './components/auth/auth.module#AuthModule' },
+  { path: '', redirectTo: '/tasks', pathMatch: 'full' },
+  { path: 'tasks', component: TaskComponent },
+  { path: 'private', component: PrivateTaskComponent,canActivate:[AuthGuard] },
+  { path: 'signup', component: SignupComponent },
+  { path: 'signin', component: SigninComponent },
 ];
 
 @NgModule({
