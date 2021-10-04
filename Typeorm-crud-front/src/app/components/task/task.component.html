@@ -1,11 +1,11 @@
 <h1>tasks</h1>
 
 
-<div  >
-  <ol>
-    <li *ngFor="let task of userTasks">
-    {{ task.task }}{{  " => " }}  {{ task.status }}
+
+  <ol class="list-group">
+    <li *ngFor="let task of userTasks" class="list-group-item">
+    {{ task.name }}{{" : "}}{{task.description}}{{  " => " }}  {{ task.status }}
     </li>
   </ol>
  
-</div>
+

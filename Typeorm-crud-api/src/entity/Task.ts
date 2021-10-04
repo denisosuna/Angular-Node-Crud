@@ -10,9 +10,10 @@ import { Auth } from "./Auth";
 export class Task {
   @PrimaryGeneratedColumn()
   id: number;
-
   @Column()
-  task: string;
+  task_name: string;
+  @Column()
+  task_description: string;
   @Column()
   status: string;
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })

@@ -8,7 +8,7 @@ export const getTasks = async (
 ): Promise<Response> => {
   const tasks = await getRepository(Task).find();
   const formatedTasks = tasks.map((tasks) => {
-    return {"id":tasks.id,"task": tasks.task,"status":tasks.status}
+    return {"id":tasks.id,"name": tasks.task_name,"description":tasks.task_description,"status":tasks.status}
   })
   return res.json(formatedTasks);
 };
